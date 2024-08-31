@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  mapAccounts: '[]'
+  mapRoles: |
+    - rolearn: arn:aws:iam::943215927729:role/Services-AdminRole38563C57-SUBdRgDBfPuY
+      username: arn:aws:iam::943215927729:role/Services-AdminRole38563C57-SUBdRgDBfPuY
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::943215927729:role/Services-petsiteNodegroupDefaultCapacityNodeGroupRo-0p4QrAUpWaR8
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+    - rolearn: arn:aws:iam::943215927729:role/observabilityworkshop-admin
+      username: observabilityworkshop-admin
+      groups:
+        - system:masters
+  mapUsers: |
+    - userarn: arn:aws:iam::943215927729:user/kimkm95
+      username: kimkm95
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+  labels:
+    aws.cdk.eks/prune-c80ddf2d298a18ffb3f7f41fe62f0d050edd6fc539: ""
+
